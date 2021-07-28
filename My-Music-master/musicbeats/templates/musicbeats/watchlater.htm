@@ -1,0 +1,33 @@
+{%extends 'musicbeats/basic.htm'%}
+{% block title%}Teja-Song{% endblock %}
+
+{% block body %}
+{% load static %}
+<h1 class="text-center mt-5"  data-aos="zoom-in" data-aos-delay="600">Watch Later</h1>
+
+{% if song|length < 1 %} <h3 style="text-align: center; padding-top: 5%; "  data-aos="zoom-in" data-aos-delay="600">You have no Video in your Watch Later</h3>
+  {% endif %}
+
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      {% for i in song reversed %}
+      <div class="col-11 col-md-4 mb-3">
+        <div class="card mb-3"  data-aos="zoom-out" data-aos-delay="700">
+          <div>
+            <img src="{{i.image}}" class="card-img" alt="...">
+          </div>
+          <div>
+            <div class="card-body">
+              <h5 class="card-title">{{i.name}}</h5>
+              <p class="card-text">Tags: {{i.tags}}</p>
+              <p class="card-text">Movie: {{i.movie}}</p>
+              <a href="/musicbeats/songs/{{i.song_id}}"><button class="btn btn-primary">Play Song</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% endblock %}
